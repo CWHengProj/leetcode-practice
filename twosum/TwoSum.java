@@ -1,17 +1,15 @@
+import java.util.HashMap;
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        for (int i=0; i<nums.length; i++){
-            int toFind = target - nums[i];
-            for (int j=0; j<nums.length;j++){
-                if (i==j){
-                    continue;
-                }
-                if (nums[j]==toFind){
-                    int[] toReturn = {i,j};
-                    return toReturn;
-                }
+        HashMap<Integer, Integer> newMap = new HashMap<>();
+        for (int k=0;  k<nums.length; k++){
+            int toFind = target - nums[k];
+            if (newMap.containsKey(toFind)){
+                int [] soln = {k,newMap.get(toFind)};
+                return soln;
             }
-            
+            newMap.put(nums[k],k);
         }
         return null;
     }
