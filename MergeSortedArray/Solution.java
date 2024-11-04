@@ -21,8 +21,8 @@ class Solution {
                 break;
             }
         }
+        int q=0;
         for (int l=0;l<nums1.length;l++){
-            int q=0;
             if (nums1[l]==0){
                 nums1[l]=nums2[q];
                 q++;
