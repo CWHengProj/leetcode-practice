@@ -4,8 +4,14 @@ class Solution {
         //MUST be in consecutive order
         
         //idea - go through the int array for complete matches
-        if (haystack.contains(needle)){
-            return haystack.indexOf(needle);
+        int nLength = needle.length();
+        int hLength = haystack.length();
+        //badsad - sad 6-3 =3
+
+        for (int i=0; i<=hLength-nLength; i++){
+            if (haystack.substring(i,(i+nLength)).equals(needle)){
+                return i;
+            }
         }
         return -1;
     }
