@@ -1,16 +1,15 @@
-import java.util.HashMap;
-
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> newMap = new HashMap<>();
-        for (int k=0;  k<nums.length; k++){
-            int toFind = target - nums[k];
-            if (newMap.containsKey(toFind)){
-                int [] soln = {k,newMap.get(toFind)};
-                return soln;
+        //go through each of the numbers in the array, and do the math to find the desired pair. find the rest of the digits if there is a match.
+        for (int i=0;i<nums.length; i++){
+            int lf = target - nums[i];
+            for (int j=i+1; j<nums.length; j++){
+                if (nums[j]==lf){
+                    int[] solution = {i,j};
+                    return solution;
+                }
             }
-            newMap.put(nums[k],k);
         }
-        return null;
+    return null;
     }
 }
