@@ -15,17 +15,23 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        //intuition : to invert the binary tree, need to know the size of the binary tree, as well as its depth
-        //calculate depth by - 1, 2, 4, 8, 16 etc. if the sum is 1,2,4, the depth would be 3. i increment +1
-        //assuming that TreeNode is a list of values, find the depth first
-        int treeSize = TreeNode.size();
-        int i =0;//2 power 0 =1
-        double subtract = Math.pow(2,i);
-        while (treeSize!=0){
-            treeSize-=subtract;
-            i++;
+        //after watching solutions.
+        // root is able to call left and right to obtain the left child and the right child.
+        //TreeNode has setter getter functions as well
+        //Goal of this function is to invert the tree:
+        // where the children of each node is swapped. Recursion is used to reach the end of the node
+        if (root == null){
+            return root;
         }
-        int treeDepth = i;
+        //perform recursion to the next layer
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+
+        //perform the swap
+        root.right = left;
+        root.left = right;
         
+        //return the root
+        return root;
     }
 }
