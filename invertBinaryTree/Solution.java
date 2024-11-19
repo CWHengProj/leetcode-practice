@@ -24,6 +24,7 @@ class Solution {
             return root;
         }
         //perform recursion to the next layer
+        //will recurse until the base case, where the root will be returned
         TreeNode left = invertTree(root.left);
         TreeNode right = invertTree(root.right);
 
