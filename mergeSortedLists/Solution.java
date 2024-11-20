@@ -16,31 +16,29 @@ class Solution {
         //intuition - to use the list1.next and list2.next to compare
         //to iterate through, insert as required?
         ListNode newNode = new ListNode(0);
-        ListNode finaList = newNode;
+        ListNode finalList = newNode;
         //size of finalList should be the combined sizes of list1 and list2
-        int first = list1.val;
-        int second = list2.val;
         while(list1!=null && list2!=null){
-            if (first>second){
-                finalList.next=first;
-                first = list1.next;
+            if (list2.val>list1.val){
+                finalList.next=list1;
+                list1 = list1.next;
             }
             else{
-                finalList.next=second;
-                second = list2.next;
+                finalList.next=list2;
+                list2 = list2.next;
             }
-            finalList.next
+            finalList = finalList.next;
             //add the smaller item into the finalList
             //the second value will remain to be used to compare with the next value before 
             //does next dispose of the current value
         }
         //add in the remainder of the list that has not been added
-        finalList.next;
-        if (list1==null){
-            finalList.add(list2);
+        if (list1!=null){
+            finalList.next=list1;
         }
-        if (list2==null){
-            finalList.add(list1);
+        if (list2!=null){
+            finalList.next=list2;
         }
+        return newNode.next;
     }
 }
