@@ -12,31 +12,35 @@ import java.lang.classfile.components.ClassPrinter.ListNode;
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        //next moves onto the next array item in the node, but val is used to obtain the value
         //intuition - to use the list1.next and list2.next to compare
         //to iterate through, insert as required?
-        ListNode finalList = new ListNode(){};
+        ListNode newNode = new ListNode(0);
+        ListNode finaList = newNode;
         //size of finalList should be the combined sizes of list1 and list2
-        int first = list1.next;
-        int second = list2.next;
-        while(list1.size()!=0 && list2.size()!=0){
+        int first = list1.val;
+        int second = list2.val;
+        while(list1!=null && list2!=null){
             if (first>second){
-                finalList.add(first);
+                finalList.next=first;
                 first = list1.next;
             }
             else{
-                finalList.add(second);
+                finalList.next=second;
                 second = list2.next;
             }
+            finalList.next
             //add the smaller item into the finalList
             //the second value will remain to be used to compare with the next value before 
             //does next dispose of the current value
         }
         //add in the remainder of the list that has not been added
-        while (list1.size()!=0){
-           finalList.add(list1.next);
+        finalList.next;
+        if (list1==null){
+            finalList.add(list2);
         }
-        while (list2.size()!=0){
-            finalList.add(list2.next);
-         }
+        if (list2==null){
+            finalList.add(list1);
+        }
     }
 }
