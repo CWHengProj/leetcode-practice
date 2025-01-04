@@ -1,8 +1,17 @@
 public class TwoSum2 {
-    public int[] twoSum(int[] nums, int target) {
-    //issue with previous solution was the nesting of for loops - can i do it with just 1 for loop?
-    // idea: to only go through 1 loop.
-    // idea: search through by creating a map
+    class Solution {
+        public int[] twoSum(int[] nums, int target) {
+            Map<Integer, Integer> newMap = new HashMap<>();
+            for (int i=0; i<nums.length; i++){
+                int pair = target - nums[i];
+                if (newMap.containsKey(pair)){
+                    int[] soln = {newMap.get(pair),i};
+                    return soln;
+                }
+                newMap.put(nums[i],i);
+            }
     
+            return null;
+        }
     }
 }
